@@ -11,15 +11,24 @@ public class SQLite : NativeModule {
 	public SQLite()
 	{
 		AddMember(new NativeFunction("open", (NativeCallback)Open));
+		AddMember(new NativeFunction("openFromPath", (NativeCallback)OpenFromPath));
 		AddMember(new NativeFunction("openFromBundle", (NativeCallback)OpenFromBundle));
 	}
 
+
+	object OpenFromPath (Context c, object[] args)
+	{
+		var filepath = args[0] as string;
+		debug_log "filepath is "+filepath;
+		var db = new SQLiteDb(filepath);
+		return db.EvaluateExports(c, null);
+	}
 
 	object Open (Context c, object[] args)
 	{
 		var filename = args[0] as string;
 		var filepath = Path.Combine(Directory.GetUserDirectory(UserDirectory.Data), filename);
-
+		debug_log "filepath is "+filepath;
 		var db = new SQLiteDb(filepath);
 		return db.EvaluateExports(c, null);
 	}

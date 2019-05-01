@@ -11,6 +11,7 @@ using Mono.Data.Sqlite;
 
       public static string OpenImpl(string filename)
       {
+		  System.Console.WriteLine(filename);
          if (dbs.ContainsKey(filename)) {
             return filename;
          }
@@ -22,6 +23,7 @@ using Mono.Data.Sqlite;
       }
 
       public static void CloseImpl(string handler) {
+		  System.Console.WriteLine(handler);
          var db = dbs[handler];
          db.Close();
       }
@@ -35,7 +37,7 @@ using Mono.Data.Sqlite;
         return text.Substring(0, pos) + replace + text.Substring(pos + search.Length);
       }
 
-      // Hard and ugly hack to use '?'
+      // Hard ansd ugly hack to use '?'
       static string ConvertStatment(string text) {
          var replace = "";
          var i = 1;

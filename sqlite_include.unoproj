@@ -1,18 +1,19 @@
 {
-  "Name":"FuseSQLiteLib",
-  "RootNamespace":"",
-  "Packages": [
-    "Fuse",
-    "FuseJS"
-  ],
-  "Includes": [
-    "*.uno",
-    "*.uxl"
-  ],
-  "FusePM": {
-    "Dependencies": [
-      "https://github.com/bolav/fuse-foreignhelpers"
-    ]
-  },
-  "Version": "0.12.0"
+	"Name": "SQLite",
+	"RootNamespace": "",
+	"Packages": [
+		"Fuse",
+		"FuseJS"
+	],
+	"Includes": [
+		"*.uno",
+		"*.uxl",
+		"../../node_modules/fuse-sqlite/SQLiteImpl.CIL.dll:File",
+		"../../node_modules/fuse-sqlite/sqlite3.dll:File",
+		"../../node_modules/fuse-sqlite/Mono.Data.Sqlite.dll:File"
+	],
+	"Projects": [
+		"../../node_modules/fuse-foreignhelpers/foreignhelpers_include.unoproj"
+	],
+	"Version": "0.12.0"
 }
